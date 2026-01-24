@@ -1,0 +1,260 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.hidden { display: none; }
+
+/* MUSIC BUTTON
+.music-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: rgba(0,0,0,.6);
+  border: 1px solid #333;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+} */
+
+/* MUSIC TOGGLE BUTTON (UPGRADED) */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  background: rgba(20,20,20,0.85);
+  border: 1px solid #333;
+  color: #fff;
+
+  padding: 14px 18px;
+  border-radius: 30px;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.music-btn:hover {
+  background: rgba(40,40,40,0.95);
+  transform: scale(1.05);
+}
+
+.music-btn.off {
+  opacity: 0.5;
+}
+
+/* INTRO */
+#intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 64px;
+  color: #e50914;
+  letter-spacing: 8px;
+}
+
+.greeting {
+  margin-top: 12px;
+  color: #aaa;
+  text-align: center;
+}
+
+/* PROFILE */
+#profiles {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.profiles {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile {
+  width: 140px;
+  height: 140px;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.profile:hover {
+  border-color: #fff;
+  transform: scale(1.08);
+}
+
+/* HERO */
+.hero-detail {
+  position: relative;
+  min-height: 90vh;
+  padding: 40px 20px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../img/cover.jpg') center/cover;
+  filter: brightness(0.45);
+}
+
+.hero-info {
+  position: relative;
+  max-width: 600px;
+}
+
+.badge {
+  border: 1px solid #777;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.badge.red {
+  color: #e50914;
+  border-color: #e50914;
+}
+
+.title {
+  font-size: 48px;
+  margin: 16px 0;
+}
+
+.meta span {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.match { color: #46d369; }
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary {
+  background: #e50914;
+  color: #fff;
+}
+
+.secondary {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+
+/* ROW */
+.row { padding: 20px; }
+
+.row-cards {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.row-cards img {
+  border-radius: 8px;
+  height: 260px;
+}
+
+/* EPISODES */
+.episodes { padding: 20px; }
+
+.episode-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+/* LOCATION */
+.location { padding: 20px; }
+
+.location-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* RSVP CARD */
+.rsvp-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.rsvp-card {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg,#1a1a1a,#111);
+  border-radius: 18px;
+  padding: 30px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.rsvp-card input,
+.rsvp-card select {
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.rsvp-row {
+  display: flex;
+  gap: 10px;
+}
+
+.full { width: 100%; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+footer h1 {
+  color: #e50914;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .title { font-size: 32px; }
+  .actions { flex-direction: column; }
+  .rsvp-row { flex-direction: column; }
+}
