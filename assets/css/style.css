@@ -1,4 +1,6 @@
-/* RESET */
+/* =====================
+   RESET
+===================== */
 * {
   box-sizing: border-box;
 }
@@ -12,6 +14,70 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+/* =====================
+   COVER OPENING
+===================== */
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .6s ease;
+}
+
+.cover.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../img/cover.jpg') center/cover no-repeat;
+  filter: brightness(.25);
+}
+
+.cover-content {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+.cover-logo {
+  font-size: 64px;
+  letter-spacing: 8px;
+  color: #e50914;
+  margin-bottom: 24px;
+  animation: logoBounce 1.6s ease-out infinite;
+}
+
+@keyframes logoBounce {
+  0% { transform: translateY(0); }
+  20% { transform: translateY(-12px); }
+  40% { transform: translateY(0); }
+  60% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.cover-dear {
+  font-size: 18px;
+  color: #ddd;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.cover-dear strong {
+  font-size: 22px;
+  color: #fff;
+}
+
+.cover-btn {
+  padding: 16px 28px;
+  font-size: 16px;
 }
 
 /* =====================
@@ -30,60 +96,40 @@ body {
   letter-spacing: 2px;
   cursor: pointer;
   z-index: 9999;
-  transition: .25s;
-}
-
-.music-btn:hover {
-  background: rgba(40,40,40,.95);
 }
 
 /* =====================
-   INTRO
-===================== */
-#intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo {
-  font-size: 64px;
-  color: #e50914;
-  letter-spacing: 8px;
-}
-
-.greeting {
-  margin-top: 12px;
-  color: #aaa;
-  text-align: center;
-}
-
-/* =====================
-   PROFILE
+   PROFILE SELECTION
 ===================== */
 #profiles {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+#profiles.show {
+  opacity: 1;
 }
 
 .profiles {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .profile {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border: 2px solid #333;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: .3s;
+  font-size: 14px;
 }
 
 .profile:hover {
@@ -97,7 +143,7 @@ body {
 .hero-detail {
   position: relative;
   min-height: 90vh;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
 .hero-bg {
@@ -109,7 +155,7 @@ body {
 
 .hero-info {
   position: relative;
-  max-width: 600px;
+  max-width: 640px;
 }
 
 .badge {
@@ -141,10 +187,10 @@ body {
 
 .desc {
   color: #ddd;
-  max-width: 520px;
+  max-width: 560px;
+  line-height: 1.6;
 }
 
-/* EVENT DATE */
 .event-info {
   margin-top: 14px;
 }
@@ -155,22 +201,22 @@ body {
   color: #ddd;
 }
 
-/* ACTIONS */
 .actions {
-  margin-top: 20px;
+  margin-top: 24px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
 }
 
 /* =====================
    BUTTON
 ===================== */
 .btn {
-  padding: 12px 20px;
+  padding: 12px 22px;
   border: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
+  border-radius: 6px;
 }
 
 .primary {
@@ -188,44 +234,51 @@ body {
 }
 
 /* =====================
-   GALLERY ROW
+   GALLERY
 ===================== */
 .row {
-  padding: 40px 20px;
+  padding: 60px 20px;
+}
+
+.row h2 {
+  margin-bottom: 16px;
 }
 
 .row-cards {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .row-cards img {
   height: 260px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-/* EPISODES */
+/* =====================
+   EPISODES
+===================== */
 .episodes {
-  padding: 60px 20px;
-  max-width: 800px;
+  padding: 80px 20px;
+  max-width: 900px;
   margin: auto;
 }
 
 .episode-card {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   background: #111;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 18px;
 }
 
 .thumb {
-  width: 80px;
-  height: 60px;
+  width: 90px;
+  height: 64px;
   background: #222;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -250,9 +303,11 @@ body {
   color: #ccc;
 }
 
-/* LOCATION */
+/* =====================
+   LOCATION
+===================== */
 .location {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
 }
 
@@ -260,53 +315,56 @@ body {
   background: #111;
   max-width: 420px;
   margin: auto;
-  border-radius: 18px;
-  padding: 30px;
-}
-
-.location-card h3 {
-  margin-bottom: 6px;
+  border-radius: 20px;
+  padding: 32px;
 }
 
 .location-card p {
   color: #aaa;
-  margin-bottom: 16px;
 }
 
-/* =====================
-   CARD COMMON
-===================== */
-.rsvp-card,
-.gift-card,
-.comment-card {
-  max-width: 420px;
+.location-map {
+  margin: 18px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+.location-map iframe {
   width: 100%;
-  background: linear-gradient(180deg,#1a1a1a,#111);
-  border-radius: 18px;
-  padding: 30px;
+  height: 260px;
+  border: 0;
 }
 
 /* =====================
-   RSVP
+   CARD SECTIONS
 ===================== */
 .rsvp-section,
 .gift-section,
 .comment-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   display: flex;
   justify-content: center;
 }
 
+.rsvp-card,
+.gift-card,
+.comment-card {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg,#1a1a1a,#111);
+  border-radius: 22px;
+  padding: 32px;
+}
+
 .subtitle {
   color: #aaa;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-.rsvp-row {
-  display: flex;
-  gap: 10px;
-}
-
+/* =====================
+   FORM
+===================== */
 input,
 select,
 textarea {
@@ -316,6 +374,17 @@ textarea {
   border: 1px solid #333;
   color: #fff;
   margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.rsvp-row {
+  display: flex;
+  gap: 12px;
 }
 
 /* =====================
@@ -324,15 +393,25 @@ textarea {
 .gift-item {
   background: #222;
   border-radius: 14px;
-  padding: 14px;
-  margin-top: 12px;
+  padding: 16px;
+  margin-top: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+}
+
+.gift-item strong {
+  font-size: 16px;
+}
+
+.gift-item small {
+  color: #aaa;
+  font-size: 12px;
 }
 
 /* =====================
-   COMMENTS
+   COMMENT
 ===================== */
 #commentList {
   margin-top: 20px;
@@ -340,14 +419,10 @@ textarea {
 
 .comment {
   background: #222;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-}
-
-.comment strong {
-  color: #e50914;
-  font-size: 13px;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 /* =====================
@@ -371,33 +446,39 @@ textarea {
   max-width: 320px;
   width: 90%;
   text-align: center;
-  animation: popup .35s ease;
-}
-
-@keyframes popup {
-  from {
-    opacity: 0;
-    transform: scale(.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* =====================
    RESPONSIVE
 ===================== */
-@media (max-width:768px) {
-  .title {
-    font-size: 32px;
+@media (min-width: 1024px) {
+  .rsvp-card,
+  .gift-card,
+  .comment-card,
+  .location-card {
+    max-width: 720px;
+    padding: 42px;
   }
 
-  .actions {
-    flex-direction: column;
+  .location-map iframe {
+    height: 360px;
   }
+}
 
-  .rsvp-row {
-    flex-direction: column;
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rsvp-card,
+  .gift-card,
+  .comment-card,
+  .location-card {
+    max-width: 560px;
+    padding: 36px;
   }
+}
+
+@media (max-width: 767px) {
+  .cover-logo { font-size: 48px; }
+  .title { font-size: 32px; }
+  .actions { flex-direction: column; }
+  .rsvp-row { flex-direction: column; }
+  .row-cards img { height: 200px; }
 }

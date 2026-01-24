@@ -1,7 +1,8 @@
 // ===============================
 // ELEMENTS
 // ===============================
-const intro = document.getElementById('intro');
+const cover = document.getElementById('cover');
+const openBtn = document.getElementById('openInvitation');
 const profiles = document.getElementById('profiles');
 const main = document.getElementById('main');
 
@@ -9,54 +10,53 @@ const tudum = document.getElementById('tudum');
 const backsound = document.getElementById('backsound');
 const musicToggle = document.getElementById('musicToggle');
 
-// ===============================
-// GREETING FROM URL
-// ===============================
-const greetingEl = document.getElementById('greetingText');
-const heroGuest = document.getElementById('heroGuest');
-const params = new URLSearchParams(window.location.search);
-let guestName = params.get('to');
-
-if (guestName) {
-  guestName = guestName.replace(/[-_]/g, ' ');
-  guestName = guestName.replace(/\b\w/g, l => l.toUpperCase());
-
-  greetingEl.innerHTML =
-    `Halo <b>${guestName}</b> 👋<br>Yuk saksikan perjalanan cinta kami 🎬`;
-
-  heroGuest.innerText = guestName;
-}
+const popup = document.getElementById('popup');
+const popupTitle = document.getElementById('popupTitle');
+const popupMessage = document.getElementById('popupMessage');
 
 // ===============================
-// INTRO FLOW (VISUAL ONLY)
-// ===============================
-setTimeout(() => {
-  intro.style.display = 'none';
-  profiles.classList.remove('hidden');
-}, 3000);
-
-// ===============================
-// PROFILE CLICK = AUDIO START
+// STATE
 // ===============================
 let audioStarted = false;
+let invitationOpened = false;
 
+// ===============================
+// COVER → PROFILE
+// ===============================
+openBtn.addEventListener('click', () => {
+  if (invitationOpened) return;
+  invitationOpened = true;
+
+  cover.classList.add('fade-out');
+
+  setTimeout(() => {
+    cover.style.display = 'none';
+    profiles.classList.remove('hidden');
+    profiles.classList.add('show');
+  }, 600);
+});
+
+// ===============================
+// PROFILE → MAIN + AUDIO
+// ===============================
 document.querySelectorAll('.profile').forEach(profile => {
   profile.addEventListener('click', () => {
 
     if (!audioStarted) {
       tudum.currentTime = 0;
       tudum.volume = 1;
-      tudum.play();
+      tudum.play().catch(() => {});
 
       setTimeout(() => {
         backsound.volume = 0.35;
-        backsound.play();
+        backsound.play().catch(() => {});
       }, 1200);
 
       audioStarted = true;
     }
 
-    profiles.style.display = 'none';
+    profiles.classList.remove('show');
+    profiles.classList.add('hidden');
     main.classList.remove('hidden');
   });
 });
@@ -66,7 +66,7 @@ document.querySelectorAll('.profile').forEach(profile => {
 // ===============================
 musicToggle.addEventListener('click', () => {
   if (backsound.paused) {
-    backsound.play();
+    backsound.play().catch(() => {});
     musicToggle.innerText = 'MUSIC ON';
   } else {
     backsound.pause();
@@ -77,60 +77,85 @@ musicToggle.addEventListener('click', () => {
 // ===============================
 // SCROLL TO RSVP
 // ===============================
-document.getElementById('scrollRsvp').addEventListener('click', () => {
-  document.getElementById('rsvp').scrollIntoView({
-    behavior: 'smooth'
+const scrollBtn = document.getElementById('scrollRsvp');
+if (scrollBtn) {
+  scrollBtn.addEventListener('click', () => {
+    document.getElementById('rsvp').scrollIntoView({
+      behavior: 'smooth'
+    });
   });
-});
+}
 
 // ===============================
 // RSVP SUBMIT
 // ===============================
-document.getElementById('rsvpForm').addEventListener('submit', e => {
-  e.preventDefault();
-  showPopup(
-    'Kehadiran Anda berhasil dikonfirmasi ❤️',
-    'RSVP Berhasil'
-  );
-});
+const rsvpForm = document.getElementById('rsvpForm');
+if (rsvpForm) {
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showPopup(
+      'Kehadiran Anda berhasil dikonfirmasi ❤️',
+      'RSVP Berhasil'
+    );
+    rsvpForm.reset();
+  });
+}
 
 // ===============================
 // WEDDING GIFT COPY
 // ===============================
 document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    const rek = e.target.closest('.gift-item').dataset.rek;
-    navigator.clipboard.writeText(rek);
-    showPopup('Nomor rekening berhasil disalin 💝');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const item = e.target.closest('.gift-item');
+    if (!item) return;
+
+    const rek = item.dataset.rek;
+
+    navigator.clipboard.writeText(rek).then(() => {
+      showPopup('Nomor rekening berhasil disalin 💝');
+    }).catch(() => {
+      showPopup('Gagal menyalin nomor rekening');
+    });
   });
 });
 
 // ===============================
-// COMMENTS (FRONTEND ONLY)
+// COMMENTS / DOA
 // ===============================
-document.getElementById('commentForm').addEventListener('submit', e => {
-  e.preventDefault();
+const commentForm = document.getElementById('commentForm');
+const commentList = document.getElementById('commentList');
 
-  const name = e.target.querySelector('input').value;
-  const msg = e.target.querySelector('textarea').value;
+if (commentForm) {
+  commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const div = document.createElement('div');
-  div.className = 'comment';
-  div.innerHTML = `<strong>${name}</strong><p>${msg}</p>`;
+    const name = commentForm.querySelector('input').value.trim();
+    const msg = commentForm.querySelector('textarea').value.trim();
 
-  document.getElementById('commentList').prepend(div);
-  e.target.reset();
-});
+    if (!name || !msg) return;
+
+    const div = document.createElement('div');
+    div.className = 'comment';
+    div.innerHTML = `<strong>${name}</strong><p>${msg}</p>`;
+
+    commentList.prepend(div);
+    commentForm.reset();
+
+    showPopup('Terima kasih atas doa dan ucapannya 💖');
+  });
+}
 
 // ===============================
 // POPUP
 // ===============================
 function showPopup(message, title = 'Terima Kasih') {
-  document.getElementById('popupTitle').innerText = title;
-  document.getElementById('popupMessage').innerText = message;
-  document.getElementById('popup').classList.remove('hidden');
+  popupTitle.innerText = title;
+  popupMessage.innerText = message;
+  popup.classList.remove('hidden');
 }
 
 function closePopup() {
-  document.getElementById('popup').classList.add('hidden');
+  popup.classList.add('hidden');
 }
