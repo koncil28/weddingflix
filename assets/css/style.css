@@ -11,7 +11,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* =====================
@@ -203,6 +203,74 @@ body {
 .row-cards img {
   height: 260px;
   border-radius: 8px;
+}
+
+/* EPISODES */
+.episodes {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.episode-card {
+  display: flex;
+  gap: 16px;
+  background: #111;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.thumb {
+  width: 80px;
+  height: 60px;
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e50914;
+  font-size: 20px;
+}
+
+.ep-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.ep-info h3 span {
+  font-size: 13px;
+  color: #aaa;
+  margin-left: 8px;
+}
+
+.ep-info p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* LOCATION */
+.location {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.location-card {
+  background: #111;
+  max-width: 420px;
+  margin: auto;
+  border-radius: 18px;
+  padding: 30px;
+}
+
+.location-card h3 {
+  margin-bottom: 6px;
+}
+
+.location-card p {
+  color: #aaa;
+  margin-bottom: 16px;
 }
 
 /* =====================
