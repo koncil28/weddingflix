@@ -10,10 +10,8 @@
 
 <!-- AUDIO -->
 <audio id="tudum" src="assets/sound/tudum.mp3"></audio>
-<audio id="backsound" src="assets/sound/bg-music.mp3" loop></audio>
-<button id="musicToggle" class="music-btn" aria-label="Toggle Music">
-  MUSIC
-</button>
+<audio id="backsound" src="assets/sound/backsound.mp3" loop></audio>
+<button id="musicToggle" class="music-btn">MUSIC ON</button>
 
 <!-- INTRO -->
 <section id="intro">
@@ -34,13 +32,12 @@
   </div>
 </section>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main id="main" class="hidden">
 
-  <!-- HERO DETAIL -->
+  <!-- HERO -->
   <section class="hero-detail">
     <div class="hero-bg"></div>
-
     <div class="hero-info">
       <span class="badge">WEDFLIX ORIGINAL</span>
       <span class="badge red">SPECIAL FOR YOU</span>
@@ -50,17 +47,30 @@
       <div class="meta">
         <span class="match">99% Match</span>
         <span>2026</span>
-        <span class="age">13+</span>
+        <span>13+</span>
         <span>Limited Series</span>
         <span>Ultra HD</span>
       </div>
 
       <p class="desc">
-        Halo <b id="heroGuest">Tamu Spesial</b>, sebuah perjalanan cinta yang penuh tawa kini tiba di episode puncak: Janji Suci.
+        Halo <b id="heroGuest">Tamu Spesial</b>, perjalanan cinta ini akan segera mencapai episode terbaiknya.
       </p>
 
+      <!-- TANGGAL EVENT (DITAMBAH) -->
+      <div class="event-info">
+        <span class="event-date">Sabtu • 20 Juli 2026</span>
+      </div>
+
       <div class="actions">
-        <button class="btn primary">▶ Save Date</button>
+        <!-- SAVE THE DATE (GOOGLE CALENDAR) -->
+        <a
+          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Adit+%26+Dewi&dates=20260720T080000/20260720T140000&details=Akad+dan+Resepsi+Pernikahan+Adit+%26+Dewi&location=Hotel+Mulia+Senayan+Jakarta"
+          target="_blank"
+          class="btn primary"
+        >
+          ▶ Save The Date
+        </a>
+
         <button class="btn secondary" id="scrollRsvp">ℹ RSVP</button>
       </div>
     </div>
@@ -68,7 +78,7 @@
 
   <!-- GALLERY -->
   <section class="row">
-    <h2>Trending Now: Pre-Wedding Gallery</h2>
+    <h2>Trending Now</h2>
     <div class="row-cards">
       <img src="assets/img/foto 1.jpg">
       <img src="assets/img/foto 2.jpg">
@@ -76,42 +86,11 @@
     </div>
   </section>
 
-  <!-- EPISODES -->
-  <section class="episodes">
-    <h2>Season 1: The Wedding Day</h2>
-
-    <div class="episode-card">
-      <div class="thumb">▶</div>
-      <div class="ep-info">
-        <h3>Akad Nikah <span>08:00 – 10:00</span></h3>
-        <p>Prosesi sakral pengikatan janji suci di hadapan keluarga inti.</p>
-      </div>
-    </div>
-
-    <div class="episode-card">
-      <div class="thumb">▶</div>
-      <div class="ep-info">
-        <h3>Resepsi Pernikahan <span>11:00 – 14:00</span></h3>
-        <p>Waktunya merayakan kebahagiaan bersama seluruh tamu undangan.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATION -->
-  <section class="location">
-    <h2>Location & Sets</h2>
-    <div class="location-card">
-      <h3>Kediaman Mempelai Wanita</h3>
-      <p>Kediaman Mempelai Wanita, Kalanganyar, Kabupaten Lebak</p>
-      <button class="btn primary">📍 Buka Lokasi Syuting</button>
-    </div>
-  </section>
-
-  <!-- RSVP CARD -->
+  <!-- RSVP -->
   <section class="rsvp-section" id="rsvp">
     <div class="rsvp-card">
       <h2>RSVP</h2>
-      <p class="subtitle">Pastikan kehadiran Anda tercatat.</p>
+      <p class="subtitle">Konfirmasi kehadiran Anda</p>
 
       <form id="rsvpForm">
         <input type="text" placeholder="Nama Lengkap" required>
@@ -137,35 +116,61 @@
   </section>
 
   <!-- WEDDING GIFT -->
-<section class="gift-section">
-  <div class="gift-card">
-    <h2>Wedding Gift</h2>
-    <p class="subtitle">
-      Doa restu Anda adalah hadiah terindah.  
-      Namun bila berkenan berbagi tanda kasih:
-    </p>
+  <section class="gift-section">
+    <div class="gift-card">
+      <h2>Wedding Gift</h2>
+      <p class="subtitle">Tanda kasih dapat dikirim melalui:</p>
 
-    <div class="gift-item">
-      <span>Bank BCA</span>
-      <strong id="rekBca">1234567890</strong>
-      <button class="btn secondary" onclick="copyRek('rekBca')">Copy</button>
+      <div class="gift-item" data-rek="1234567890">
+        <div>
+          <span>BCA</span>
+          <strong>1234567890</strong>
+          <small>a.n Adit</small>
+        </div>
+        <button class="btn secondary copy-btn">COPY</button>
+      </div>
+
+      <div class="gift-item" data-rek="9876543210">
+        <div>
+          <span>Mandiri</span>
+          <strong>9876543210</strong>
+          <small>a.n Dewi</small>
+        </div>
+        <button class="btn secondary copy-btn">COPY</button>
+      </div>
     </div>
+  </section>
 
-    <div class="gift-item">
-      <span>Bank Mandiri</span>
-      <strong id="rekMandiri">9876543210</strong>
-      <button class="btn secondary" onclick="copyRek('rekMandiri')">Copy</button>
+  <!-- KOMENTAR / DOA -->
+  <section class="comment-section">
+    <div class="comment-card">
+      <h2>Doa & Ucapan</h2>
+
+      <form id="commentForm">
+        <input type="text" placeholder="Nama" required>
+        <textarea placeholder="Tulis doa atau ucapan..." required></textarea>
+        <button class="btn primary full">Kirim</button>
+      </form>
+
+      <div id="commentList"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <!-- FOOTER -->
   <footer>
     <h1>WEDFLIX</h1>
     <p>© 2026 With Love Adit & Dewi</p>
   </footer>
 
 </main>
+
+<!-- POPUP -->
+<div id="popup" class="popup hidden">
+  <div class="popup-box">
+    <h2 id="popupTitle">Terima Kasih</h2>
+    <p id="popupMessage"></p>
+    <button class="btn primary full" onclick="closePopup()">OK</button>
+  </div>
+</div>
 
 <script src="assets/js/app.js"></script>
 </body>

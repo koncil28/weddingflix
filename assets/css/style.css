@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+/* RESET */
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -7,54 +10,36 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
-/* MUSIC BUTTON
-.music-btn {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 9999;
-  background: rgba(0,0,0,.6);
-  border: 1px solid #333;
-  color: #fff;
-  padding: 8px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-} */
-
-/* MUSIC TOGGLE BUTTON (UPGRADED) */
+/* =====================
+   MUSIC TOGGLE
+===================== */
 .music-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 9999;
-
-  background: rgba(20,20,20,0.85);
-  border: 1px solid #333;
-  color: #fff;
-
   padding: 14px 18px;
   border-radius: 30px;
-
+  background: rgba(20,20,20,.85);
+  border: 1px solid #333;
+  color: #fff;
   font-size: 12px;
   letter-spacing: 2px;
-  font-weight: 600;
-
   cursor: pointer;
-  transition: all .25s ease;
+  z-index: 9999;
+  transition: .25s;
 }
 
 .music-btn:hover {
-  background: rgba(40,40,40,0.95);
-  transform: scale(1.05);
+  background: rgba(40,40,40,.95);
 }
 
-.music-btn.off {
-  opacity: 0.5;
-}
-
-/* INTRO */
+/* =====================
+   INTRO
+===================== */
 #intro {
   height: 100vh;
   display: flex;
@@ -75,7 +60,9 @@ body {
   text-align: center;
 }
 
-/* PROFILE */
+/* =====================
+   PROFILE
+===================== */
 #profiles {
   padding: 60px 20px;
   text-align: center;
@@ -83,8 +70,8 @@ body {
 
 .profiles {
   display: flex;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -104,7 +91,9 @@ body {
   transform: scale(1.08);
 }
 
-/* HERO */
+/* =====================
+   HERO
+===================== */
 .hero-detail {
   position: relative;
   min-height: 90vh;
@@ -114,8 +103,8 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('../img/cover.jpg') center/cover;
-  filter: brightness(0.45);
+  background: url('../img/cover.jpg') center/cover no-repeat;
+  filter: brightness(.45);
 }
 
 .hero-info {
@@ -146,20 +135,42 @@ body {
   color: #bbb;
 }
 
-.match { color: #46d369; }
-
-.actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
+.match {
+  color: #46d369;
 }
 
-/* BUTTON */
+.desc {
+  color: #ddd;
+  max-width: 520px;
+}
+
+/* EVENT DATE */
+.event-info {
+  margin-top: 14px;
+}
+
+.event-date {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #ddd;
+}
+
+/* ACTIONS */
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+/* =====================
+   BUTTON
+===================== */
 .btn {
   padding: 12px 20px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .primary {
@@ -172,8 +183,16 @@ body {
   color: #fff;
 }
 
-/* ROW */
-.row { padding: 20px; }
+.full {
+  width: 100%;
+}
+
+/* =====================
+   GALLERY ROW
+===================== */
+.row {
+  padding: 40px 20px;
+}
 
 .row-cards {
   display: flex;
@@ -182,42 +201,32 @@ body {
 }
 
 .row-cards img {
-  border-radius: 8px;
   height: 260px;
+  border-radius: 8px;
 }
 
-/* EPISODES */
-.episodes { padding: 20px; }
-
-.episode-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 16px;
-}
-
-/* LOCATION */
-.location { padding: 20px; }
-
-.location-card {
-  background: #1a1a1a;
-  border-radius: 16px;
-  padding: 20px;
-}
-
-/* RSVP CARD */
-.rsvp-section {
-  padding: 60px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.rsvp-card {
-  width: 100%;
+/* =====================
+   CARD COMMON
+===================== */
+.rsvp-card,
+.gift-card,
+.comment-card {
   max-width: 420px;
+  width: 100%;
   background: linear-gradient(180deg,#1a1a1a,#111);
   border-radius: 18px;
   padding: 30px;
+}
+
+/* =====================
+   RSVP
+===================== */
+.rsvp-section,
+.gift-section,
+.comment-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .subtitle {
@@ -225,8 +234,14 @@ body {
   margin-bottom: 16px;
 }
 
-.rsvp-card input,
-.rsvp-card select {
+.rsvp-row {
+  display: flex;
+  gap: 10px;
+}
+
+input,
+select,
+textarea {
   width: 100%;
   padding: 12px;
   background: #222;
@@ -235,26 +250,86 @@ body {
   margin-bottom: 12px;
 }
 
-.rsvp-row {
+/* =====================
+   GIFT
+===================== */
+.gift-item {
+  background: #222;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 12px;
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.full { width: 100%; }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px 0;
+/* =====================
+   COMMENTS
+===================== */
+#commentList {
+  margin-top: 20px;
 }
 
-footer h1 {
+.comment {
+  background: #222;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.comment strong {
   color: #e50914;
+  font-size: 13px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .title { font-size: 32px; }
-  .actions { flex-direction: column; }
-  .rsvp-row { flex-direction: column; }
+/* =====================
+   POPUP
+===================== */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.popup-box {
+  background: linear-gradient(180deg,#1a1a1a,#0e0e0e);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  animation: popup .35s ease;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width:768px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .rsvp-row {
+    flex-direction: column;
+  }
 }
