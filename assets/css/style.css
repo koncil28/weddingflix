@@ -579,3 +579,203 @@ textarea {
     flex: 1;
   }
 }
+
+/* =====================
+   COUNTDOWN
+===================== */
+.countdown {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: rgba(0,0,0,.55);
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 72px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.time-box span {
+  font-size: 26px;
+  font-weight: bold;
+  display: block;
+}
+
+.time-box small {
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .countdown {
+    justify-content: flex-start;
+  }
+
+  .time-box span {
+    font-size: 22px;
+  }
+}
+
+/* =====================
+   HERO MOBILE FIX
+===================== */
+@media (max-width: 767px) {
+  .hero-detail {
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+
+  .hero-info {
+    max-width: 100%;
+  }
+
+  .hero-info > * {
+    margin-bottom: 14px;
+  }
+}
+
+/* =====================
+   HERO MOBILE FIX
+===================== */
+@media (max-width: 767px) {
+
+  /* HERO WRAPPER */
+  .hero-detail {
+    min-height: auto;
+    padding: 100px 16px 40px;
+  }
+
+  .hero-info {
+    max-width: 100%;
+  }
+
+  /* BADGES */
+  .hero-info .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 4px 6px;
+    margin-bottom: 6px;
+  }
+
+  /* TITLE */
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  /* META */
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  /* DESCRIPTION */
+  .desc {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* EVENT DATE */
+  .event-date {
+    font-size: 13px;
+  }
+
+  /* COUNTDOWN */
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .countdown .time-box {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .countdown .time-box strong {
+    font-size: 22px;
+  }
+
+  .countdown .time-box span {
+    font-size: 12px;
+  }
+
+  /* ACTION BUTTONS */
+  .actions {
+    gap: 12px;
+  }
+
+  .actions .btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* MUSIC BUTTON */
+  .music-btn {
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+}
+
+/* =====================
+   COUNTDOWN MOBILE HORIZONTAL
+===================== */
+@media (max-width: 767px) {
+
+  .countdown {
+    display: flex;
+    flex-wrap: nowrap;          /* PAKSA 1 BARIS */
+    gap: 10px;
+    overflow-x: auto;           /* AMAN KALAU LAYAR KECIL */
+    padding-bottom: 6px;
+  }
+
+  .countdown::-webkit-scrollbar {
+    display: none;              /* HIDE SCROLLBAR */
+  }
+
+  .time-box {
+    min-width: 64px;            /* PERKECIL BOX */
+    padding: 10px 8px;
+    flex-shrink: 0;             /* JANGAN MENGECIL SENDIRI */
+  }
+
+  .time-box span {
+    font-size: 18px;
+  }
+
+  .time-box small {
+    font-size: 10px;
+  }
+}
+
+/* =====================
+   COUNTDOWN OPACITY TWEAK
+===================== */
+.time-box {
+  background: rgba(0,0,0,0.38);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* =====================
+   HERO ACTION CENTER
+===================== */
+.actions {
+  justify-content: center;
+}
+
+.actions .btn.primary {
+  text-align: center;
+}
